@@ -1,0 +1,126 @@
+html {
+	margin: 0;
+	padding: 0;
+}
+body {
+	margin: 0;
+	text-align: center;
+	/*font-family:arial;*/
+	font-family: 'Oswald', sans-serif !important;
+	/*background:url('../img/zeroBackground_50.png');*/
+}
+
+.main_content {
+	margin-top: 5%;
+	width: 90%;
+	margin-left: 5%;
+	border: solid 1px #ccc;
+}
+.nav_content {
+	width: 90%;
+	margin-left: 5%;
+	text-align: center;
+	padding: 0;
+}
+.view_content {
+	width: 80%;
+	padding: 2%;
+}
+.sub_view_content {
+	width: 100%;
+	padding: 0%;
+}
+.view_segment {
+
+	margin: 5%;
+	border: solid 1px #ddd;
+	text-align: left;
+}
+.nav_items {
+	background-color: #ddd;
+	margin-right: 5px;
+	text-align: left;
+	width: 100%;
+	height: 30px;
+	border-bottom: solid 2px #333;
+}
+.nav_items a {
+	width: 100px;
+	max-width: 125px;
+}
+.view_nav_items a {
+	width: 100px;
+	max-width: 125px;
+}
+.list {
+	border: solid 1px #000;
+	overflow-y: scroll;
+	max-height: 200px;
+}
+.list_item_group {
+	color: #222;
+	width: 100%;
+	border-bottom: solid #ccc 1px;
+}
+.list_item_group a {
+	text-decoration: none;
+	font-size: 12px;
+}
+.list_item_icon {
+	float: right;
+	margin-right: 10px;
+}
+/* ==== PAGINATOR  ===========================================================================   */
+.pagination_page{
+	margin-top:2% !important;overflow-y:scroll !important;
+}
+.paginator_table_body tr:hover {
+	color: #bbb !important;
+}
+.paginator_highlight {
+	color: #ccc;
+}
+
+.paginator_details_content {
+	position: absolute;
+	width: 75%;
+	max-width: 75%;
+	top: 10%;
+	left: -100%;
+
+	height:100%;
+
+	opacity: 0;
+	background-color: #fff;
+	z-index: 99999999;
+	box-shadow: 10px 10px 5px #ccc;
+	padding: 20px;
+	/*overflow:hidden !important;*/
+}
+.paginator_create_content {
+    position: absolute;
+    width: 75%;
+    max-width: 75%;
+    height:100%;
+
+
+    top: 10%;
+    left: 80%;
+
+    opacity: 0;
+    background-color: #fff;
+    z-index: 99999999;
+    box-shadow: -10px 10px 5px #ccc;
+    padding: 20px;
+    /*overflow:hidden !important;*/
+}
+.paginator_search_wrapper{
+	width:90% !important;margin-left:5% !important;
+}
+.paginator_search_input{
+	display:inline;max-width:50% !important;
+}
+.panel_anchor{
+	margin-right:10px;
+}
+/* ==== PAGINATOR  ===========================================================================   */

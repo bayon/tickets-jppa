@@ -1,0 +1,1 @@
+ <?php header('Access-Control-Allow-Origin: *'); header('Content-type: application/json'); ?>[{"id":"25","name":"socks","parent_id":"10","doc_id":"22","title":"white socks","description":"knee hi baby!","updated":"2016-09-28 20:12:36"},{"id":"26","name":"underwear","parent_id":"10","doc_id":"22","title":"tighty","description":"whiteys","updated":"2016-09-28 20:13:01"}]
