@@ -1,0 +1,11 @@
+notes.txt
+6 FIXES For WUP and app-lite to RELATIONSHIP handlers.
+views:(1) 
+load_data() m=readToJSONByParentId
+controllers:(4)
+read() $_Session['parent_id'] = $_SESSION['admin_id']
+readToJSONByParentId() insert $_SESSION['parent_id'] arg
+read_parent_id set $_SESSION['parent_id'] = $_data['parent_id']
+create() substitute $_SESSION['parent_id']  arg for get_paterent method
+MODELS:
+readByParentId make 'table' set to 'itself' not child'.

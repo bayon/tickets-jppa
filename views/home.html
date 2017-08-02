@@ -1,0 +1,67 @@
+<div id="template_view_1" class="container-fluid animated fadeIn kioview"    >
+
+	 <div class="row top-row">
+		<div class="col-md-12  ">
+
+			<div class="col-md-3" style="text-align:left;">
+				<h3>Tickets</h3>
+				<div  >
+					<ul>
+						<li>  </li>
+
+					</ul>
+				</div>
+
+			</div>
+
+
+		</div>
+	 </div>
+	 <div class="row">
+	 	<div id="content_stage" class="col-md-12  ">
+	 	
+	 	</div>
+	 </div>
+</div>
+<!-- BACKGROUND IMAGES -->
+<div id="BG_IMG">
+	&nbsp;
+	<!-- <img src="img/sky.jpg"> -->
+</div>
+<div id="BG_IMG_LEFT">
+	&nbsp;
+</div>
+<div id="BG_IMG_RIGHT">
+	&nbsp;
+</div>
+<div id="BG_IMG_TOP">
+	&nbsp;
+</div>
+<!-- end of BACKGROUND IMAGES -->
+<script>
+	( function() {
+			$('#BG_IMG').addClass('gradient6');//be sure to remove unwanted classes before applying a new one.
+			console.log('ajax my data.....');
+			var dataString = "c=generic_controller&m=readToJSON&data_only=true";
+			var URL = "http://localhost:8888/00_go/Gomedia40/00_CommunityWall/includes/docs/docs_5/generic_5.json";
+ 			ajax_datastring_URL_callback(dataString, URL, load_data_callback);
+		}());
+
+
+		function load_data_callback(data){
+			$('#content_stage').html(data);
+			console.log(data);
+			var obj = JSON.parse(data);
+			console.log(obj);
+			var html = "";
+			for(var i in obj){
+				html += "<h3>"+obj[i].title +"</h3>";
+				html += "<p>"+ obj[i].description + "</h3>";
+			}
+			$('#content_stage').html(html);
+
+		}
+</script>
+
+
+<!-- ////////////////////////////   -->

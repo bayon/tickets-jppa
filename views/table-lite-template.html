@@ -1,0 +1,154 @@
+ 
+		
+
+
+
+
+<div id="template_view_1" class="container-fluid animated fadeIn kioview" style="text-align:center;"  >
+	 
+	 <div class="row top-row">
+	 
+		<div class="col-md-12">
+			<h3>table-lite</h3>
+			 
+			<div class="row">
+				 <section class="container">
+			<div class="page">
+				 
+				
+				<!--<ul>
+					<li>Sortable</li>
+					<li>Searchable</li>
+					<li>Handle Checked Rows</li>
+					<li>RWD</li>
+					<li>Pagination</li>
+					<li>MySQl data to .json</li>
+					
+				</ul>-->
+				<div id="tableBody1-pagination" class="tableLiteTBody-pagination">
+					
+					<input type="search" class="light-table-filter" data-table="order-table" placeholder="Filter">
+					<a id="tableBody1-previous" href="#">
+					<button class='table-lite-btn'>
+						&laquo; Previous
+					</button></a>
+					<a id="tableBody1-next" href="#">
+					<button class='table-lite-btn'>
+						Next &raquo;
+					</button></a>
+					
+					<select id="itemsPerPage" onchange="changeItemsPerPage(this);">
+						<option>10</option>
+						<option>25</option>
+						<option>50</option>
+						<option>100</option>
+						<option>500</option>
+						<option>1000</option>
+					</select>
+					<a href = "" ><button class='table-lite-btn' >refresh</button></a>
+					<button onclick="tableLiteCheckedRows('table');"> handle checked rows </button>
+				</div>
+
+				<table id="table" class="sortable order-table table layout display responsive-table">
+					<thead>
+						<tr id="table_headers">
+							<!-- headers appended here by js -->
+							<!-- 	var headers = ["ID", "YEAR", "AWARD", "AWARDEE"]; -->
+							<th></th>
+							<th>ID</th>
+							<th>YEAR</th>
+							<th>AWARD</th>
+							<th>AWARDEE</th>
+						</tr>
+					</thead>
+					<tbody id="tableBody1" class="tableLiteTBody">
+						<!-- json data inserted here -->
+					</tbody>
+				</table>
+
+				
+			</div>
+
+		</section>
+			</div>
+		</div>
+	 </div>
+</div>
+<!-- BACKGROUND IMAGES -->
+<div id="BG_IMG">
+	&nbsp;
+	<!-- <img src="img/sky.jpg"> -->
+</div>
+<div id="BG_IMG_LEFT">
+	&nbsp;
+</div>
+<div id="BG_IMG_RIGHT">
+	&nbsp;
+</div>
+<div id="BG_IMG_TOP">
+	&nbsp;
+</div>
+<!-- end of BACKGROUND IMAGES -->
+<script>
+			function initTableLite() {
+				/* might mess up the filter by header
+				var headers = ["ID", "YEAR", "AWARD", "AWARDEE"];
+				$("#table_headers").append("<th></th>");
+				// append a blank th for the checkbox column
+				for (var i = 0; i < headers.length; i++) {
+					$("#table_headers").append("<th>" + headers[i] + "</th>");
+				}*/
+			}
+
+			function changeItemsPerPage(obj) {
+				//console.log(obj.value);
+				itemsPerPage = obj.value;
+				loadData();
+			}
+		</script>
+		<script>
+			function tableLiteCheckedRows_callback(array_of_ids) {
+				console.log('table-lite: Loop through these ids and handle them as you will...');
+				console.log(array_of_ids);
+			}
+		</script>
+		<script type="text/javascript">
+			var itemsPerPage = null;
+			$(document).ready(function() {
+				itemsPerPage = 10;
+				loadData();
+			});
+
+			function loadData() {
+				$.getJSON('http://10.110.210.93:8888/00_go/gomedia40/KIOSKS/kio-lite-0.0.1/js/table-lite/data5.json', function(data) {
+					var rows = [];
+					$.each(data, function(i, row) {
+
+						//console.log( typeof row);
+						if ( typeof row == "object") {
+							console.log(row);
+							var html = "<tr>";
+							html += "<td><input type='checkbox'  ><input type='hidden' name='id' value='" + row.id + "'></td>";
+							html += "<td>" + row.id + "</td>";
+							html += "<td>" + row.year + "</td>";
+							html += "<td>" + row.award_name + "</td>";
+							html += "<td>" + row.awardee + "</td>";
+							html += "</tr>";
+							rows.push(html);
+						}
+					});
+					$('#tableBody1').append(rows.join(''));
+					$('#tableBody1').paginate({
+						itemsPerPage : itemsPerPage
+					});
+
+				});
+
+			}
+		</script>
+<script>
+	( function() {
+			$('#BG_IMG').addClass('gradient6');//be sure to remove unwanted classes before applying a new one.
+		}()); 
+		 
+</script>

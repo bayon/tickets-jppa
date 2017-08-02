@@ -1,0 +1,75 @@
+project_creation.txt
+
+Projects:
+id,parent_id,name,owner,brand,priority,description,location,mockup,est_hours,percent_complete,desired_dt,est_dt
+SQL:
+ CREATE TABLE IF NOT EXISTS `projects` (`id` bigint(20) NOT NULL AUTO_INCREMENT, PRIMARY KEY(`id`), `parent_id`  tinytext NOT NULL, `name`  tinytext NOT NULL, `owner`  tinytext NOT NULL, `brand`  tinytext NOT NULL, `priority`  tinytext NOT NULL, `description`  tinytext NOT NULL, `location`  tinytext NOT NULL, `mockup`  tinytext NOT NULL, `est_hours`  tinytext NOT NULL, `percent_complete`  tinytext NOT NULL, `desired_dt`  tinytext NOT NULL, `est_dt`  tinytext NOT NULL)
+		 ENGINE=InnoDB DEFAULT CHARSET=latin1 COMMENT='viaCodeWriter' AUTO_INCREMENT=1 ;
+
+
+
+Requirements:
+id,parent_id,name,owner,priority,description,location,files,mockup,dependencies,est_hours,percent_complete,est_dt
+SQL:
+CREATE TABLE IF NOT EXISTS `requirements` (`id` bigint(20) NOT NULL AUTO_INCREMENT, PRIMARY KEY(`id`), `parent_id`  tinytext NOT NULL, `name`  tinytext NOT NULL, `owner`  tinytext NOT NULL, `priority`  tinytext NOT NULL, `description`  tinytext NOT NULL, `location`  tinytext NOT NULL, `files`  tinytext NOT NULL, `mockup`  tinytext NOT NULL, `dependencies`  tinytext NOT NULL, `est_hours`  tinytext NOT NULL, `percent_complete`  tinytext NOT NULL, `est_dt`  tinytext NOT NULL)
+		 ENGINE=InnoDB DEFAULT CHARSET=latin1 COMMENT='viaCodeWriter' AUTO_INCREMENT=1 ;
+
+
+
+Tasks:
+id,parent_id,name,owner,priority,description,location,files,est_hours,percent_complete,est_dt
+SQL:
+CREATE TABLE IF NOT EXISTS `tasks` (`id` bigint(20) NOT NULL AUTO_INCREMENT, PRIMARY KEY(`id`), `parent_id`  tinytext NOT NULL, `name`  tinytext NOT NULL, `owner`  tinytext NOT NULL, `priority`  tinytext NOT NULL, `description`  tinytext NOT NULL, `location`  tinytext NOT NULL, `files`  tinytext NOT NULL, `est_hours`  tinytext NOT NULL, `percent_complete`  tinytext NOT NULL, `est_dt`  tinytext NOT NULL)
+		 ENGINE=InnoDB DEFAULT CHARSET=latin1 COMMENT='viaCodeWriter' AUTO_INCREMENT=1 ;
+
+
+
+SUMMARY: create an outline of each project
+starts with a button in the Project 'modal' window.
+<button type='button' class='btn btn-default' data-dismiss='modal'>
+	Summary
+</button>
+
+modeled after 'To Do' weekly report:
+
+onclick='exportToOutline();'
+
+function exportToOutline() {
+            console.log(TABLE_DATA);
+            document.getElementById('modal-todo').click();
+            var html = "<div class='ui_wrapper'> ";
+            html += '<h2>Weekly Report</h2>';
+            var date = new Date();
+            console.log(date);
+            html += '<p>' + date + '</p>';
+            html += '<div class="outline_wrapper">  ';
+
+            for (var i in TABLE_DATA) {
+                html += "<ul>";
+                html += "<li style='font-weight:bold;' >" + TABLE_DATA[i]['name'] + "</li>";
+                html += "<ul>";
+                html += "<li> " + TABLE_DATA[i]['description'] + "</li>";
+                html += "<li>" + TABLE_DATA[i]['notes'] + "</li>";
+                html += "<li>" + TABLE_DATA[i]['completed'] + "</li>";
+                html += "<li>" + TABLE_DATA[i]['percent'] + "</li>";
+                html += "<li>" + TABLE_DATA[i]['due'] + "</li>";
+                html += "</ul>";
+                html += "</ul>";
+            }
+            html += "</div>";
+            html += "<button onclick='snapShot()' data-dismiss='modal' >snapshot</button>";
+            html += "</div>";
+            $('.modal-body').html(html);
+        }
+
+HERE  WE NEED: projects_data, requirements_data, tasks_data :
+
+reality Check:
+add for codewriter
+x.VIEW:
+rowClick  childname in title of modal .
+
+X.CONTROLLER:
+public function read($_data) {
+        // TOP PARENT ONLY: $_SESSION['parent_id'] = $_SESSION['admin_id']; 
+         //persist parent id inside child tables by commenting out above line.

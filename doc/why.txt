@@ -1,0 +1,42 @@
+v-1.0.0
+This template is based on 3 main things:
+1) Bootstrap framework 
+2) HTML5 BoilerPlate framework
+3) Single index navigation.
+
+First of all Bootstrap is obviously a well-documented framework that popular becasue it is awesome.
+	Second, the HTML5 BoilerPlate, quite simply has "the combined knowledge and effort of 100s of developers, 
+all in one little package." They have ironed out most of the "hiccups" you would run into designing 
+adaptable ,cross-browser friendly,future-friendly, web applications and kiosks.
+	And third, "Single Index Navigation", called that because I don't know what else to call it. But it 
+works like this. The index is the 'only' place you have to set '<head>' information, and include 'javascripts'.
+And, by listening for 'query string parameters', we can easily pull in new page views via a jquery ajax call,
+without leaving the index.html
+	It also contains a folder full of templates based on previously designed Codigo kiosks. And it is designed 
+with only html,css, and javascript to fit within our typical kiosk environment.
+	
+
+Bootstrap Reference for Components etc.
+http://getbootstrap.com/2.3.2/index.html
+
+HTML5 Boilerplate
+https://html5boilerplate.com/
+and inside the "doc" file of the template, you can see all the thought they put into it.
+
+
+This particular version can easily be expanded upon as well.
+
+Single Index Navigation:
+WOrks like this ...
+you have an anchor tag with parameters for the page(pg), title, and modal.
+<a href="?pg=home.html&title=home&modal=home-modal.html">Home</a>
+
+Down at the bottom of the page there's a ...jquery document ready function.
+$(document).ready(function() {
+
+}
+That listens for the parameters and changes the appropriate divs.
+
+
+
+
